@@ -1,5 +1,19 @@
 generateCells(16)  
 
+const myStylesheet = document.styleSheets[0];
+
+let cellRule;
+
+for (let i = 0; i < myStylesheet.cssRules.length; i++) {
+    if (myStylesheet.cssRules[i].selectorText === '.cell') {
+        cellRule = myStylesheet.cssRules[i];
+    } else if (myStylesheet.cssRules[i].selectorText === '.div-container') {
+        divContainerRule = myStylesheet.cssRules[i];
+    }
+}
+
+const divContainerWidth = parseFloat(divContainerRule.style.maxWidth)
+
 let button = document.querySelector('button');
 button.addEventListener('mousedown', event => {
     promptGrid()
@@ -33,6 +47,7 @@ function eraseCells() {
 
 function promptGrid() {
     let gridSize = Number(window.prompt('Type a number beween 8 through 100, please.',''));
+    alterCellDimension(gridSize);
     if (gridSize >= 8 && gridSize <= 100) {
         eraseCells();
         generateCells(gridSize);
@@ -43,7 +58,7 @@ function promptGrid() {
     }
 }
 
-const stylesheet = document.styleSheets[0].cssRules;
-
-console.log(stylesheet)
-
+function alterCellDimension(gridSize) {
+    cellRule.style.setProperty('width', Math.round(divContainerWidth/gridSize)/1000*1000 + 'rem')
+    cellRule.style.setProperty('height', Math.round(divContainerWidth/gridSize)/1000*1000 + 'rem')
+}

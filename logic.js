@@ -47,11 +47,12 @@ function eraseCells() {
 
 function promptGrid() {
     let gridSize = Number(window.prompt('Type a number beween 8 through 100, please.',''));
-    alterCellDimension(gridSize);
     if (gridSize >= 8 && gridSize <= 100) {
+        alterCellDimension(gridSize);
         eraseCells();
         generateCells(gridSize);
     } else if (gridSize != 0) {
+        alterCellDimension(16)
         eraseCells();
         generateCells(16);
     } else if (gridSize = 0) {
@@ -59,7 +60,7 @@ function promptGrid() {
 }
 
 function alterCellDimension(gridSize) {
-    let newDivContainerWidth = Math.round(divContainerWidth/(gridSize))/1000*1000
+    let newDivContainerWidth = divContainerWidth/gridSize
     cellRule.style.setProperty('width', newDivContainerWidth + 'px')
     cellRule.style.setProperty('height', newDivContainerWidth + 'px')
 }

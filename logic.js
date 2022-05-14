@@ -1,4 +1,4 @@
-generateCells(16)  
+generateCells(16)
 
 const myStylesheet = document.styleSheets[0];
 
@@ -12,7 +12,7 @@ for (let i = 0; i < myStylesheet.cssRules.length; i++) {
     }
 }
 
-const divContainerWidth = parseFloat(divContainerRule.style.maxWidth)
+const divContainerWidth = parseFloat(divContainerRule.style.width)
 
 let button = document.querySelector('button');
 button.addEventListener('mousedown', event => {
@@ -59,6 +59,7 @@ function promptGrid() {
 }
 
 function alterCellDimension(gridSize) {
-    cellRule.style.setProperty('width', Math.round(divContainerWidth/gridSize)/1000*1000 + 'rem')
-    cellRule.style.setProperty('height', Math.round(divContainerWidth/gridSize)/1000*1000 + 'rem')
+    let newDivContainerWidth = Math.round(divContainerWidth/(gridSize))/1000*1000
+    cellRule.style.setProperty('width', newDivContainerWidth + 'px')
+    cellRule.style.setProperty('height', newDivContainerWidth + 'px')
 }

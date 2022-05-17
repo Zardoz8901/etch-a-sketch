@@ -17,15 +17,15 @@ body {
 }
 
 .grid {
-width: 700px;
-height: 700px;
-display: grid;
-grid-template-rows: repeat(16, 1fr);
-grid-template-columns: repeat(16, 1fr);
-}
+    width: 700px;
+    height: 700px;
+    display: grid;
+    grid-template-rows: repeat(16, 1fr);
+    grid-template-columns: repeat(16, 1fr);
+    }
 
 .cell {
-background-color: bisque;
+    background-color: bisque;
 }
 
 .big-button {

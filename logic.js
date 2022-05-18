@@ -3,13 +3,20 @@ const myStylesheet = document.styleSheets[0];
 for (let i = 0; i < myStylesheet.cssRules.length; i++) {
     if (myStylesheet.cssRules[i].selectorText === '.grid') {
         gridRule = myStylesheet.cssRules[i];
-    }
+    } else if (myStylesheet.cssRules[i].selectorText === '.paint')
+        paintRule = myStylesheet.cssRules[i];
 }
 
-let button = document.querySelector('button');
-button.addEventListener('mousedown', event => {
+let sizeButton = document.querySelector('#grid-button');
+sizeButton.addEventListener('click', event => {
     promptGrid()
-});
+}); 
+
+let colorButton = document.querySelector('#color');
+colorButton.addEventListener('click', event => {
+    setRandomColor()
+}); 
+
 
 generateCells(16)
 
@@ -35,6 +42,15 @@ function paintCell() {
 });
 }
 
+function setRandomColor() {
+    document.querySelectorAll('.cell').forEach((selectCell) => {
+    selectCell.addEventListener('mousemove', function() {
+    let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    paintRule.style.setProperty('background-color', '#' + randomColor);
+    });  
+});
+}
+
 function eraseCells() {
     let gridContainer = document.querySelector('.grid');
     while (gridContainer.firstChild) {
@@ -53,3 +69,5 @@ function promptGrid() {
     } else if (gridSize = 0) {
     }
 }
+
+

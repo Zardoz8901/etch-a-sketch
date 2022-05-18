@@ -44,9 +44,9 @@ function paintCell() {
 
 function setRandomColor() {
     document.querySelectorAll('.cell').forEach((selectCell) => {
-    selectCell.addEventListener('mousemove', function() {
+    selectCell.addEventListener('mouseover', function() {
     let randomColor = Math.floor(Math.random()*16777215).toString(16);
-    paintRule.style.setProperty('background-color', '#' + randomColor);
+    this.style.setProperty('background-color', '#' + randomColor);
     });  
 });
 }

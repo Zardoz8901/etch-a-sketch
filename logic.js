@@ -24,6 +24,7 @@ colorButton.addEventListener('click', event => {
 
 let opacityButton = document.querySelector('#opacity');
 opacityButton.addEventListener('click', event => {
+    styleCells()
     paintOpacity()
 });
 
@@ -55,21 +56,28 @@ function setRandomColor() {
     selectCell.addEventListener('mouseover', function() {
     let randomColor = Math.floor(Math.random()*16777215).toString(16);
     this.style.setProperty('background-color', '#' + randomColor);
-    });  
+    });
 });
 }
 
 function paintOpacity() {
     document.querySelectorAll('.cell').forEach((selectCell) => {
     selectCell.addEventListener('mouseenter', function() {
-    selectCell.style.setProperty('background-color', 'bisque')
-    let opacityP = parseFloat(cellRule.style.opacity);
+    let opacityP = parseFloat(selectCell.style.opacity);
     if (opacityP >= 0) {
-    this.style.setProperty('opacity', `${opacityP -= 0.1}`);
+    selectCell.style.setProperty('opacity', `${opacityP -= 0.1}`)
     }
     });
 });
 }
+
+function styleCells() {    
+    document.querySelectorAll('.cell').forEach((selectCell) => {
+        selectCell.style.setProperty('background-color', 'bisque')
+        selectCell.style.setProperty('opacity', '1')
+    });
+}
+
 
 function eraseCells() {
     let gridContainer = document.querySelector('.grid');
@@ -90,4 +98,10 @@ function promptGrid() {
     }
 }
 
-
+function clearStyle () {
+    document.querySelectorAll('.cell').forEach((selectCell) => {
+        selectCell.style.opacity = '1';
+        selectCell.style.background = 'bisque';
+        selectCell.classList.remove = '.paint';
+    });
+}

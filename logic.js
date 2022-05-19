@@ -19,11 +19,13 @@ sizeButton.addEventListener('click', event => {
 
 let colorButton = document.querySelector('#color');
 colorButton.addEventListener('click', event => {
+    promptGrid()
     setRandomColor()
 }); 
 
 let opacityButton = document.querySelector('#opacity');
 opacityButton.addEventListener('click', event => {
+    promptGrid()
     styleCells()
     paintOpacity()
 });
@@ -31,6 +33,7 @@ opacityButton.addEventListener('click', event => {
 generateCells(16)
 
 function generateCells(gridSize) {
+    styleCells()
     let sizeBySize = (gridSize * gridSize)
     let e = document.querySelector('.grid');
     gridRule.style.setProperty('grid-template-rows', `repeat(${gridSize}, 1fr)`);
@@ -78,6 +81,12 @@ function styleCells() {
     });
 }
 
+function clearCells() {    
+    document.querySelectorAll('.cell').forEach((selectCell) => {
+        selectCell.style.backGroundColor = 'bisque';
+        selectCell.style.opacity = '1';
+    });
+}
 
 function eraseCells() {
     let gridContainer = document.querySelector('.grid');
@@ -98,10 +107,3 @@ function promptGrid() {
     }
 }
 
-function clearStyle () {
-    document.querySelectorAll('.cell').forEach((selectCell) => {
-        selectCell.style.opacity = '1';
-        selectCell.style.background = 'bisque';
-        selectCell.classList.remove = '.paint';
-    });
-}

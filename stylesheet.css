@@ -22,10 +22,12 @@ body {
     display: grid;
     grid-template-rows: repeat(16, 1fr);
     grid-template-columns: repeat(16, 1fr);
+    background-color: black;
     }
 
 .cell {
     background-color: bisque;
+    opacity: 1;
 }
 
 .button {
@@ -41,4 +43,9 @@ body {
 
 .paint {
     background-color: black;
+}
+
+.hover {
+    background-color: black;
+    opacity: .01;
 }
